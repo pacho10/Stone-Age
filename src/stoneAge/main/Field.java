@@ -1,6 +1,6 @@
 package stoneAge.main;
 
-public class Field extends PlayerBoardElement {
+public class Field extends GameBoardElement {
 private static final int MAX_FREE_PLACES = 1;
 //food
 	

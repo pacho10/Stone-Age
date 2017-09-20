@@ -1,6 +1,6 @@
 package stoneAge.main;
 
-public class Hut extends PlayerBoardElement {
+public class Hut extends GameBoardElement {
 private static final int MAX_FREE_PLACES = 2;
 	
 	public Hut() {

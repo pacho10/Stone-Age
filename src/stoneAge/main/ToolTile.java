@@ -1,6 +1,6 @@
 package stoneAge.main;
 
-public class ToolTile extends PlayerBoardElement {
+public class ToolTile extends GameBoardElement {
 	private static final int MAX_FREE_PLACES = 1;
 	//coollection of tools
 	

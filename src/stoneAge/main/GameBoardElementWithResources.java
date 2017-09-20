@@ -1,9 +1,9 @@
 package stoneAge.main;
 
-public abstract class PlayerBoardElementWithResources extends PlayerBoardElement {
+public abstract class GameBoardElementWithResources extends GameBoardElement {
 	private static final int MAX_FREE_PLACES = 7;
 	
-	public PlayerBoardElementWithResources() {
+	public GameBoardElementWithResources() {
 		super();
 	}
 	
