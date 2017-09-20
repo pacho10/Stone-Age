@@ -3,12 +3,12 @@ package stoneAge.main;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class PlayerBoardElement {
+public abstract class GameBoardElement {
 
 	private static final int MAX_FREE_PLACES = 50;
 private List<Figure> figures;
 	
-	public PlayerBoardElement() {
+	public GameBoardElement() {
 		this.figures = new ArrayList<>();
 	}
 	

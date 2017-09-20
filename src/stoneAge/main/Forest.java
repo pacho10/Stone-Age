@@ -4,7 +4,7 @@ import java.util.List;
 
 import stoneAge.resources.TreeResource;
 
-public class Forest extends PlayerBoardElementWithResources {
+public class Forest extends GameBoardElementWithResources {
 	private List<TreeResource> resorces;
 	
 	public Forest(List<TreeResource> trees) {
