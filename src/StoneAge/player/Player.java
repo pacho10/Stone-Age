@@ -1,4 +1,4 @@
-package StoneAge.player;
+package stoneAge.player;
 
 public class Player {
 	private int clay;
