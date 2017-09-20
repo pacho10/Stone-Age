@@ -9,7 +9,7 @@ private static final int MAX_FREE_PLACES = 1;
 	}
 	
 	@Override
-	public int getFreePlaces() {
+	public int getMaxFreePlaces() {
 		// TODO Auto-generated method stub
 		return MAX_FREE_PLACES;
 	}

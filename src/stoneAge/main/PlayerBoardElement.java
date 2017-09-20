@@ -13,7 +13,7 @@ private List<Figure> figures;
 	}
 	
 	public void addFifure(Figure figure) {
-		if (this.figures.size() < getFreePlaces()) {
+		if (this.figures.size() < getMaxFreePlaces()) {
 			this.figures.add(figure);
 		} else {
 			// do not have free space
@@ -24,7 +24,7 @@ private List<Figure> figures;
 		this.figures.remove(figure);
 	}
 	
-	public int getFreePlaces() {
+	public int getMaxFreePlaces() {
 		return MAX_FREE_PLACES;
 	}
 }

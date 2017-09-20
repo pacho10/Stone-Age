@@ -9,7 +9,7 @@ public class ToolTile extends PlayerBoardElement {
 	}
 
 	@Override
-	public int getFreePlaces() {
+	public int getMaxFreePlaces() {
 		// TODO Auto-generated method stub
 		return MAX_FREE_PLACES;
 	}
