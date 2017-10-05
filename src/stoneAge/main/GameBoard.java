@@ -6,8 +6,8 @@ import stoneAge.cards.Card;
 import stoneAge.houses.House;
 
 public class GameBoard {
-	private List<Card> cards;
-	private List<House> houses;
+	//private List<Card> cards;
+	//private List<House> houses;
 	private Forest forest;
 	private Claymound claymound;
 	private River river;
@@ -16,4 +16,16 @@ public class GameBoard {
 	private Hut hut;
 	private Field field;
 	private HuntingGround huntingGround;
+	
+	public GameBoard(Forest forest, Claymound claymound, River river, Quarry quarry, ToolTile toolTile, Hut hut,
+			Field field, HuntingGround huntingGround) {
+		this.forest = new Forest();
+		this.claymound = new Claymound();
+		this.river = new River();
+		this.quarry = new Quarry();
+		this.toolTile = new ToolTile();
+		this.hut = new Hut();
+		this.field = new Field();
+		this.huntingGround = new HuntingGround();
+	}
 }

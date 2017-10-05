@@ -5,10 +5,10 @@ import java.util.List;
 import stoneAge.resources.QuarryResource;
 
 public class Quarry extends GameBoardElementWithResources {
-	private List<QuarryResource> resorces;
+	//private List<QuarryResource> resorces;
 
-	public Quarry(List<QuarryResource> stones) {
+	public Quarry() {
 		super();
-		this.resorces = stones;
+		//this.resorces = stones;
 	}
 }

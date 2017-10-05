@@ -5,10 +5,10 @@ import java.util.List;
 import stoneAge.resources.ClaymoundResource;
 
 public class Claymound extends GameBoardElement {
-	private List<ClaymoundResource> resources;
+	//private List<ClaymoundResource> resources;
 	
-	public Claymound(List<ClaymoundResource> clay) {
+	public Claymound() {
 		super();
-		this.resources = clay;
+		//this.resources = clay;
 	}
 }

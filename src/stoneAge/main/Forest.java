@@ -5,10 +5,10 @@ import java.util.List;
 import stoneAge.resources.TreeResource;
 
 public class Forest extends GameBoardElementWithResources {
-	private List<TreeResource> resorces;
+	//private List<TreeResource> resorces;
 	
-	public Forest(List<TreeResource> trees) {
+	public Forest() {
 		super();
-		this.resorces = trees;
+		//this.resorces = trees;
 	}
 }
