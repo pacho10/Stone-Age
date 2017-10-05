@@ -17,8 +17,7 @@ public class GameBoard {
 	private Field field;
 	private HuntingGround huntingGround;
 	
-	public GameBoard(Forest forest, Claymound claymound, River river, Quarry quarry, ToolTile toolTile, Hut hut,
-			Field field, HuntingGround huntingGround) {
+	public GameBoard() {
 		this.forest = new Forest();
 		this.claymound = new Claymound();
 		this.river = new River();
