@@ -1,9 +1,12 @@
 package stoneAge.main;
 
-public class Hut extends GameBoardElement {
-	private static final int MAX_FREE_PLACES = 2;
+public class AgroculturePlace  extends GameBoardElement {
 
-	public Hut() {
+	private static final int MAX_FREE_PLACES = 1;
+	
+	public AgroculturePlace() {
+		// TODO Auto-generated constructor stub
+	
 		super();
 	}
 
@@ -12,19 +15,16 @@ public class Hut extends GameBoardElement {
 		// TODO Auto-generated method stub
 		return MAX_FREE_PLACES;
 	}
-
+	
 	@Override
 	public void addFigure(Figure figure) {
-		for (int i = 0; i < 2; i++) {
 			figure.getPlayer().takeFigure(figure);
-		}
 	}
 	@Override
 	public int removeFigure(Figure figure) {
 		super.removeFigure(figure);
-		for (int i = 0; i < 2; i++) {
-			figure.getPlayer().takeFigure(figure);			
-		}
+			figure.getPlayer().takeFigure(figure);	
+			figure.getPlayer().incrementAgroculture();
 		return 0;
 	}
 }

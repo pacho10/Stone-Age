@@ -13,4 +13,17 @@ public class ToolTile extends GameBoardElement {
 		// TODO Auto-generated method stub
 		return MAX_FREE_PLACES;
 	}
+	
+	
+	@Override
+	public void addFigure(Figure figure) {
+			figure.getPlayer().takeFigure(figure);
+	}
+	@Override
+	public int removeFigure(Figure figure) {
+		super.removeFigure(figure);
+			figure.getPlayer().takeFigure(figure);	
+			figure.getPlayer().addOneTool();
+		return 0;
+	}
 }

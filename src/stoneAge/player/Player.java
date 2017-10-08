@@ -1,5 +1,6 @@
 package stoneAge.player;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -19,6 +20,7 @@ public class Player {
 	private int multiplierForNumberOfFigures;
 	private int[] tools;
 	private int agroCulture;
+
 	private int numberOfHouses;
 	private int points;
 
@@ -35,6 +37,9 @@ public class Player {
 		this.multiplierForNumberOfFigures = 0;
 		tools = new int[3];
 		figures = new LinkedList<Figure>();
+		for (int i = 0; i < 5; i++) {
+			figures.add(new Figure(this));			
+		}
 	}
 
 	public void addOneTool() {
@@ -48,6 +53,10 @@ public class Player {
 			}
 		}
 		tools[minToolIndex] += 1;
+	}
+	
+	public void incrementAgroculture(){
+		this.agroCulture++;
 	}
 
 	public void payGold(int amountOfGold) {
@@ -141,12 +150,16 @@ public class Player {
 					}
 				}
 				if (foodToGive > 0) {
-					this.points -= (foodToGive*10);
+					this.points -= (foodToGive * 10);
 				}
 			} else {
 				this.food -= foodToGive;
 			}
 		}
+	}
+	
+	public Figure giveFigure(){
+		return this.figures.peek();
 	}
 
 	public void gainFood(int amountOfFood) {
@@ -154,14 +167,28 @@ public class Player {
 			this.food += amountOfFood;
 		}
 	}
-	
-	public void placeFigure(){
-		if(!this.figures.isEmpty()){
+
+	public void placeFigure() {
+		if (!this.figures.isEmpty()) {
 			this.figures.poll();
 		}
 	}
-	public void takeFigure(Figure figure){
+
+	public void takeFigure(Figure figure) {
 		this.figures.add(figure);
+	}
+	
+	public int getNumberOfFreeFigures(){
+		return this.figures.size();
+	}
+
+	@Override
+	public String toString() {
+		return "Player [clay=" + clay + ", stone=" + stone + ", gold=" + gold + ", wood=" + wood + ", food=" + food
+				+ ", figures=" + figures + ", multiplierForHouses=" + multiplierForHouses + ", multiplierForTools="
+				+ multiplierForTools + ", multiplierForAgroCulture=" + multiplierForAgroCulture
+				+ ", multiplierForNumberOfFigures=" + multiplierForNumberOfFigures + ", tools=" + Arrays.toString(tools)
+				+ ", agroCulture=" + agroCulture + ", numberOfHouses=" + numberOfHouses + ", points=" + points + "]";
 	}
 
 }

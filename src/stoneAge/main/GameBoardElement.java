@@ -12,7 +12,11 @@ private List<Figure> figures;
 		this.figures = new ArrayList<>();
 	}
 	
-	public void addFifure(Figure figure) {
+	public int getFreeSpaces(){
+		return MAX_FREE_PLACES - this.figures.size();
+	}
+	
+	public void addFigure(Figure figure) {
 		if (this.figures.size() < getMaxFreePlaces()) {
 			this.figures.add(figure);
 			figure.getPlayer().placeFigure();
@@ -38,5 +42,12 @@ private List<Figure> figures;
 
 	public int getMaxFreePlaces() {
 		return MAX_FREE_PLACES;
+	}
+	
+	public boolean hasFigureOnIt(){
+		if(this.figures.size()>0){
+			return true;
+		}
+		return false;
 	}
 }
