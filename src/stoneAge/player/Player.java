@@ -6,6 +6,7 @@ import java.util.Queue;
 import stoneAge.main.Figure;
 
 public class Player {
+	private static final int STARTING_FOOD_VALUE = 12;
 	private int clay;
 	private int stone;
 	private int gold;
@@ -17,32 +18,150 @@ public class Player {
 	private int multiplierForAgroCulture;
 	private int multiplierForNumberOfFigures;
 	private int[] tools;
+	private int agroCulture;
+	private int numberOfHouses;
+	private int points;
+
 	public Player() {
 		super();
-		this.food = 12;
-		this.clay = clay;
-		this.stone = stone;
-		this.gold = gold;
-		this.wood = wood;
-		this.multiplierForHouses = multiplierForHouses;
-		this.multiplierForTools = multiplierForTools;
-		this.multiplierForAgroCulture = multiplierForAgroCulture;
-		this.multiplierForNumberOfFigures = multiplierForNumberOfFigures;
+		this.food = STARTING_FOOD_VALUE;
+		this.clay = 0;
+		this.stone = 0;
+		this.gold = 0;
+		this.wood = 0;
+		this.multiplierForHouses = 0;
+		this.multiplierForTools = 0;
+		this.multiplierForAgroCulture = 0;
+		this.multiplierForNumberOfFigures = 0;
 		tools = new int[3];
 		figures = new LinkedList<Figure>();
 	}
-	
-	public void addOneTool(){
+
+	public void addOneTool() {
 		int minToolValue = tools[0];
 		int minToolIndex = 0;
-		
+
 		for (int i = 0; i < tools.length; i++) {
-			if(minToolValue > tools[0]){
+			if (minToolValue > tools[0]) {
 				minToolValue = tools[0];
 				minToolIndex = i;
 			}
 		}
 		tools[minToolIndex] += 1;
+	}
+
+	public void payGold(int amountOfGold) {
+		if (amountOfGold > 0) {
+			this.gold -= amountOfGold;
+		}
+	}
+
+	public void gainGold(int amountOfGold) {
+		if (amountOfGold > 0) {
+			this.gold += amountOfGold;
+		}
+	}
+
+	public void payClay(int amountOfClay) {
+		if (amountOfClay > 0) {
+			this.clay -= amountOfClay;
+		}
+	}
+
+	public void gainClay(int amountOfClay) {
+		if (amountOfClay > 0) {
+			this.clay += amountOfClay;
+		}
+	}
+
+	public void payWood(int amountOfWood) {
+		if (amountOfWood > 0) {
+			this.wood -= amountOfWood;
+		}
+	}
+
+	public void gainWood(int amountOfWood) {
+		if (amountOfWood > 0) {
+			this.wood += amountOfWood;
+		}
+	}
+
+	public void payStone(int amountOfStone) {
+		if (amountOfStone > 0) {
+			this.stone -= amountOfStone;
+		}
+	}
+
+	public void gainStone(int amountOfStone) {
+		if (amountOfStone > 0) {
+			this.gold += amountOfStone;
+		}
+	}
+
+	public void feed() {
+		int foodToGive = this.figures.size();
+		if (foodToGive > this.agroCulture) {
+			if (this.food < foodToGive) {
+				foodToGive -= this.food;
+				this.food = 0;
+				if (foodToGive > 0) {
+					if (this.wood < foodToGive) {
+						foodToGive -= this.wood;
+						this.wood = 0;
+					} else {
+						this.wood -= foodToGive;
+						foodToGive = 0;
+					}
+				}
+				if (foodToGive > 0) {
+					if (this.clay < foodToGive) {
+						foodToGive -= this.clay;
+						this.clay = 0;
+					} else {
+						this.clay -= foodToGive;
+						foodToGive = 0;
+					}
+				}
+				if (foodToGive > 0) {
+					if (this.stone < foodToGive) {
+						foodToGive -= this.stone;
+						this.stone = 0;
+					} else {
+						this.stone -= foodToGive;
+						foodToGive = 0;
+					}
+				}
+				if (foodToGive > 0) {
+					if (this.gold < foodToGive) {
+						foodToGive -= this.gold;
+						this.gold = 0;
+					} else {
+						this.gold -= foodToGive;
+						foodToGive = 0;
+					}
+				}
+				if (foodToGive > 0) {
+					this.points -= (foodToGive*10);
+				}
+			} else {
+				this.food -= foodToGive;
+			}
+		}
+	}
+
+	public void gainFood(int amountOfFood) {
+		if (amountOfFood > 0) {
+			this.food += amountOfFood;
+		}
+	}
+	
+	public void placeFigure(){
+		if(!this.figures.isEmpty()){
+			this.figures.poll();
+		}
+	}
+	public void takeFigure(Figure figure){
+		this.figures.add(figure);
 	}
 
 }

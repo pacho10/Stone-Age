@@ -15,15 +15,27 @@ private List<Figure> figures;
 	public void addFifure(Figure figure) {
 		if (this.figures.size() < getMaxFreePlaces()) {
 			this.figures.add(figure);
+			figure.getPlayer().placeFigure();
+			
 		} else {
 			// do not have free space
 		}
 	}
 	
-	public void removeFigure(Figure figure) {
+	public int removeFigure(Figure figure) {
 		this.figures.remove(figure);
+		figure.getPlayer().takeFigure(figure);
+		return 0;
 	}
 	
+	public List<Figure> getFigures() {
+		return figures;
+	}
+
+	public void setFigures(List<Figure> figures) {
+		this.figures = figures;
+	}
+
 	public int getMaxFreePlaces() {
 		return MAX_FREE_PLACES;
 	}
