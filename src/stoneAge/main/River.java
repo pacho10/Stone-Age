@@ -23,7 +23,8 @@ public class River extends GameBoardElement {
 	public void removeAllFiguresOfOnePlayer(Player player){
 		int amountOfGoldGained = 0;
 		for(Figure figure : this.getFigures()){
-			if(figure.getPlayer().equals(player)){
+			if((player != null) && (figure.getPlayer().equals(player))){
+				player.takeFigure(figure);
 				amountOfGoldGained += removeFigure(figure);
 				
 			}

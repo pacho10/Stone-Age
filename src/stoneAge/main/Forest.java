@@ -20,10 +20,11 @@ public class Forest extends GameBoardElementWithResources {
 		int diceValue = (int)((Math.random()*6)+1);
 		return diceValue;
 	}
+	
 	public void removeAllFiguresOfOnePlayer(Player player){
 		int amountOfWoodGained = 0;
 		for(Figure figure : this.getFigures()){
-			if(figure.getPlayer().equals(player)){
+			if((player != null) && (figure.getPlayer().equals(player))){
 				amountOfWoodGained += removeFigure(figure);
 				
 			}

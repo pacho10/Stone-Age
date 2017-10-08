@@ -1,5 +1,7 @@
 package stoneAge.main;
 
+import stoneAge.player.Player;
+
 public class Hut extends GameBoardElement {
 	private static final int MAX_FREE_PLACES = 2;
 
@@ -15,9 +17,12 @@ public class Hut extends GameBoardElement {
 
 	@Override
 	public void addFigure(Figure figure) {
-		for (int i = 0; i < 2; i++) {
-			figure.getPlayer().takeFigure(figure);
-		}
+//		for (int i = 0; i < 2; i++) {
+//			//figure.getPlayer().takeFigure(figure);
+//			this.addFigure(figure);
+//		}
+		
+		super.addFigure(figure);
 	}
 	@Override
 	public int removeFigure(Figure figure) {
@@ -26,5 +31,20 @@ public class Hut extends GameBoardElement {
 			figure.getPlayer().takeFigure(figure);			
 		}
 		return 0;
+	}
+	
+	public void removeAllFiguresOfOnePlayer(Player player) {
+		boolean flag = false;
+		for (Figure figure : this.getFigures()) {
+			if ((player != null) && (figure.getPlayer().equals(player))) {
+				player.takeFigure(figure);
+				super.removeFigure(figure);
+				flag = true;
+			}
+		}
+		
+		if (flag) {
+			player.takeFigure(new Figure(player));
+		}
 	}
 }

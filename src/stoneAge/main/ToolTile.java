@@ -1,5 +1,7 @@
 package stoneAge.main;
 
+import stoneAge.player.Player;
+
 public class ToolTile extends GameBoardElement {
 	private static final int MAX_FREE_PLACES = 1;
 	//coollection of tools
@@ -17,7 +19,8 @@ public class ToolTile extends GameBoardElement {
 	
 	@Override
 	public void addFigure(Figure figure) {
-			figure.getPlayer().takeFigure(figure);
+			//figure.getPlayer().takeFigure(figure);
+		super.addFigure(figure);
 	}
 	@Override
 	public int removeFigure(Figure figure) {
@@ -25,5 +28,14 @@ public class ToolTile extends GameBoardElement {
 			figure.getPlayer().takeFigure(figure);	
 			figure.getPlayer().addOneTool();
 		return 0;
+	}
+	
+	public void removeAllFiguresOfOnePlayer(Player player) {
+		for (Figure figure : this.getFigures()) {
+			if ((player != null) && (figure.getPlayer().equals(player))) {
+				player.takeFigure(figure);
+				player.addOneTool();
+			}
+		}
 	}
 }

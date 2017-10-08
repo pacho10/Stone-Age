@@ -1,5 +1,7 @@
 package stoneAge.main;
 
+import stoneAge.player.Player;
+
 public class AgroculturePlace  extends GameBoardElement {
 
 	private static final int MAX_FREE_PLACES = 1;
@@ -18,7 +20,8 @@ public class AgroculturePlace  extends GameBoardElement {
 	
 	@Override
 	public void addFigure(Figure figure) {
-			figure.getPlayer().takeFigure(figure);
+			//figure.getPlayer().takeFigure(figure);
+		super.addFigure(figure);
 	}
 	@Override
 	public int removeFigure(Figure figure) {
@@ -26,5 +29,15 @@ public class AgroculturePlace  extends GameBoardElement {
 			figure.getPlayer().takeFigure(figure);	
 			figure.getPlayer().incrementAgroculture();
 		return 0;
+	}
+	
+	public void removeAllFiguresOfOnePlayer(Player player) {
+		for (Figure figure : this.getFigures()) {
+			if ((player != null) && (figure.getPlayer().equals(player))) {
+				player.takeFigure(figure);
+				player.gainFood(1);
+				super.removeFigure(figure);
+			}
+		}
 	}
 }

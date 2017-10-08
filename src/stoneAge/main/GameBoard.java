@@ -14,7 +14,6 @@ public class GameBoard {
 	private Quarry quarry;
 	private ToolTile toolTile;
 	private Hut hut;
-	private Field field;
 	private HuntingGround huntingGround;
 	private AgroculturePlace agroCulturePlace;
 	
@@ -25,7 +24,6 @@ public class GameBoard {
 		this.quarry = new Quarry();
 		this.toolTile = new ToolTile();
 		this.hut = new Hut();
-		this.field = new Field();
 		this.huntingGround = new HuntingGround();
 		this.agroCulturePlace = new AgroculturePlace();
 	}
@@ -81,14 +79,7 @@ public class GameBoard {
 	public void setHut(Hut hut) {
 		this.hut = hut;
 	}
-
-	public Field getField() {
-		return field;
-	}
-
-	public void setField(Field field) {
-		this.field = field;
-	}
+	
 
 	public HuntingGround getHuntingGround() {
 		return huntingGround;

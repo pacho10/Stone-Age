@@ -23,7 +23,8 @@ public class Quarry extends GameBoardElementWithResources {
 	public void removeAllFiguresOfOnePlayer(Player player){
 		int amountOfStoneGained = 0;
 		for(Figure figure : this.getFigures()){
-			if(figure.getPlayer().equals(player)){
+			if((player != null) && (figure.getPlayer().equals(player))){
+				player.takeFigure(figure);
 				amountOfStoneGained += removeFigure(figure);
 				
 			}
