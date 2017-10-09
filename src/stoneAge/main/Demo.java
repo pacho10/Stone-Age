@@ -17,6 +17,7 @@ public class Demo {
 		System.out.println(gameBoard.getPileOfHousesOne());
 		System.out.println(gameBoard.getPileOfHousesTwo());
 		System.out.println(gameBoard.getPileOfHousesThree());
+		History h = new History("Plamen", "Emil", "Stefi");
 		int turn = 0;
 		Player playerOnTurn = null;
 		while (true) {
