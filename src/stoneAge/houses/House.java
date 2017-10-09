@@ -6,6 +6,7 @@ public class House {
 	private int stonesToPay;
 	private int goldToPay;
 	private int points;
+
 	public House(int woodToPay, int clayToPay, int stonesToPay, int goldToPay, int points) {
 		super();
 		this.woodToPay = woodToPay;
@@ -14,11 +15,11 @@ public class House {
 		this.goldToPay = goldToPay;
 		this.points = points;
 	}
-	
-	public static House generateRandomHouse(){
-		int woodToPay=0,  clayToPay=0,  stonesToPay=0,  goldToPay=0,  points=0;
+
+	public static House generateRandomHouse() {
+		int woodToPay = 0, clayToPay = 0, stonesToPay = 0, goldToPay = 0, points = 0;
 		for (int i = 0; i < 3; i++) {
-			int rand = (int)((Math.random()*4));
+			int rand = ((int) ((Math.random() * 4))+1);
 			switch (rand) {
 			case 1:
 				woodToPay++;
@@ -28,16 +29,15 @@ public class House {
 				break;
 			case 3:
 				stonesToPay++;
-			break;
+				break;
 			case 4:
 				goldToPay++;
 				break;
 			}
 		}
-		points=((woodToPay*3)+(clayToPay*4)+(stonesToPay*5)+(goldToPay*6));
-		return new House(woodToPay, clayToPay, stonesToPay, goldToPay, points) ;
-		
-		
+		points = ((woodToPay * 3) + (clayToPay * 4) + (stonesToPay * 5) + (goldToPay * 6));
+		return new House(woodToPay, clayToPay, stonesToPay, goldToPay, points);
+
 	}
 
 	public int getWoodToPay() {
@@ -65,5 +65,5 @@ public class House {
 		return "House [woodToPay=" + woodToPay + ", clayToPay=" + clayToPay + ", stonesToPay=" + stonesToPay
 				+ ", goldToPay=" + goldToPay + ", points=" + points + "]";
 	}
-	
+
 }

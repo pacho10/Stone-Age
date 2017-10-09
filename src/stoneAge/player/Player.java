@@ -20,6 +20,14 @@ public class Player {
 	private int multiplierForNumberOfFigures;
 	private int[] tools;
 	private int agroCulture;
+	private String name;
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	private int numberOfHouses;
 	private int points;

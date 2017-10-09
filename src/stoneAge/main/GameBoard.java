@@ -17,9 +17,9 @@ public class GameBoard {
 	private Hut hut;
 	private HuntingGround huntingGround;
 	private AgroculturePlace agroCulturePlace;
-	private LinkedList<House> pileOfHousesOne;
-	private LinkedList<House> pileOfHousesTwo;
-	private LinkedList<House> pileOfHousesThree;
+	HousePile pileOne; 
+	HousePile pileTwo; 
+	HousePile pileThree;
 	public GameBoard() {
 		this.forest = new Forest();
 		this.claymound = new Claymound();
@@ -29,17 +29,9 @@ public class GameBoard {
 		this.hut = new Hut();
 		this.huntingGround = new HuntingGround();
 		this.agroCulturePlace = new AgroculturePlace();
-		this.pileOfHousesOne = new LinkedList<House>();
-		this.pileOfHousesTwo = new LinkedList<House>();
-		this.pileOfHousesThree = new LinkedList<House>();
-		
-		for (int i = 0; i < NUMBER_OFhOUSES_IN_PILE; i++) {
-			pileOfHousesOne.add(House.generateRandomHouse());
-		}for (int i = 0; i < NUMBER_OFhOUSES_IN_PILE; i++) {
-			pileOfHousesTwo.add(House.generateRandomHouse());
-		}for (int i = 0; i < NUMBER_OFhOUSES_IN_PILE; i++) {
-			pileOfHousesThree.add(House.generateRandomHouse());
-		}
+		this.pileOne = new HousePile();
+		this.pileTwo = new HousePile();
+		this.pileThree = new HousePile();
 	}
 
 	public AgroculturePlace getAgroCulturePlace() {
@@ -107,17 +99,20 @@ public class GameBoard {
 		return NUMBER_OFhOUSES_IN_PILE;
 	}
 
-	public LinkedList<House> getPileOfHousesOne() {
-		return pileOfHousesOne;
+	public HousePile getPileOne() {
+		return pileOne;
 	}
 
-	public LinkedList<House> getPileOfHousesTwo() {
-		return pileOfHousesTwo;
+	public HousePile getPileTwo() {
+		return pileTwo;
 	}
 
-	public LinkedList<House> getPileOfHousesThree() {
-		return pileOfHousesThree;
+	public HousePile getPileThree() {
+		return pileThree;
 	}
+
+
+	
 	
 	
 }

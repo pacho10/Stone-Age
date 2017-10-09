@@ -5,31 +5,35 @@ import java.util.Scanner;
 import stoneAge.player.Player;
 
 public class Demo {
-	private static final int NUMBER_OF_PLACES = 7;
+	private static final int NUMBER_OF_PLACES = 8;
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		
+
 		GameBoard gameBoard = new GameBoard();
 		Player p1 = new Player();
 		Player p2 = new Player();
+		System.out.println("Enter the name of the first player");
+		p1.setName(sc.next());
+		System.out.println("Enter the name of the second player");
+		p2.setName(sc.next());
+		
 
-		System.out.println(gameBoard.getPileOfHousesOne());
-		System.out.println(gameBoard.getPileOfHousesTwo());
-		System.out.println(gameBoard.getPileOfHousesThree());
-		History h = new History("Plamen", "Emil", "Stefi");
+		
 		int turn = 0;
 		Player playerOnTurn = null;
-		while (true) {
+		while (gameBoard.getPileOne().getSize() > 0 || gameBoard.getPileTwo().getSize() > 0
+				|| gameBoard.getPileThree().getSize() > 0) {
 			int putPhaseTurn = 0;
 
 			while ((p1.getNumberOfFreeFigures() > 0) || (p2.getNumberOfFreeFigures() > 0)) {
 				playerOnTurn = (turn % 2 == 0) ? p1 : p2;
+				System.out.println(playerOnTurn.getName() +"'s turn:");
 				System.out.println(
-						"Choose the area you wish to put workers:\n0: Forest(wood)\n1: Claymound\n2: Quarry(stones)\n3: River(gold)\n4:HuntingGround(food)\n5: Hut(more workers)\n6: ToolTile(tools)\n7: AgroCulturePlace(increases your agroculture)");
-				
+						"Choose the area you wish to put workers:\n0: Forest(wood)\n1: Claymound\n2: Quarry(stones)\n3: River(gold)\n4:HuntingGround(food)\n5: Hut(more workers)\n6: ToolTile(tools)\n7: AgroCulturePlace(increases your agroculture)\n8: Buy house");
+
 				int place = sc.nextInt();
-				if (place >= 0 && place < NUMBER_OF_PLACES) {
+				if (place >= 0 && place <= NUMBER_OF_PLACES) {
 					int workers = 0;
 					switch (place) {
 					case 0:
@@ -104,8 +108,53 @@ public class Demo {
 							gameBoard.getHut().addFigure(playerOnTurn.giveFigure());
 							gameBoard.getHut().addFigure(playerOnTurn.giveFigure());
 						}
-						// agroculture
 						break;
+					// agroculture
+					case 8:
+						System.out.println("Your options are:");
+						System.out.println("1: " + gameBoard.getPileOne().getFirstHouse());
+						System.out.println("2: " + gameBoard.getPileTwo().getFirstHouse());
+						System.out.println("3: " + gameBoard.getPileThree().getFirstHouse());
+						boolean over = true;
+						while (over) {
+							if(gameBoard.getPileOne().hasFigureOnIt()&&gameBoard.getPileTwo().hasFigureOnIt()&&gameBoard.getPileThree().hasFigureOnIt());
+							int house = sc.nextInt();
+							switch (house) {
+							case 1:
+								if (gameBoard.getPileOne().hasFigureOnIt()) {
+									System.out.println("Sorry, this one is taken.");
+									over = true;
+								} else {
+									if (playerOnTurn.getNumberOfFreeFigures() >= 1) {
+										gameBoard.getPileOne().addFigure(playerOnTurn.giveFigure());
+									}
+									over = false;
+								}break;
+							case 2:
+								if (gameBoard.getPileTwo().hasFigureOnIt()) {
+									System.out.println("Sorry, this one is taken.");
+									over = true;
+								} else {
+									if (playerOnTurn.getNumberOfFreeFigures() >= 1) {
+										gameBoard.getPileTwo().addFigure(playerOnTurn.giveFigure());
+									}
+									over = false;
+								}break;
+							case 3:
+								if (gameBoard.getPileThree().hasFigureOnIt()) {
+									System.out.println("Sorry, this one is taken.");
+									over = true;
+								} else {
+									if (playerOnTurn.getNumberOfFreeFigures() >= 1) {
+										gameBoard.getPileThree().addFigure(playerOnTurn.giveFigure());
+									}
+									over = false;
+								}
+								break;
+							default:
+								System.out.println("You will have to choose from 1 to 3.");
+							}
+						}break;
 					default:
 						System.out.println("Not a valid choise.");
 						break;
@@ -114,27 +163,27 @@ public class Demo {
 				putPhaseTurn++;
 				turn++;
 			}
-			
+
 			System.out.println("GAIN RESOURCES");
 			System.out.println("###########################################################");
 			System.out.println();
-			
+
 			playerOnTurn = (turn % 2 == 0) ? p1 : p2;
 			while (gameBoard.getClaymound().hasFigureOnIt() || gameBoard.getRiver().hasFigureOnIt()
-					|| gameBoard.getHuntingGround().hasFigureOnIt() || gameBoard.getForest().hasFigureOnIt() 
-					|| gameBoard.getHut().hasFigureOnIt() || gameBoard.getQuarry().hasFigureOnIt() 
+					|| gameBoard.getHuntingGround().hasFigureOnIt() || gameBoard.getForest().hasFigureOnIt()
+					|| gameBoard.getHut().hasFigureOnIt() || gameBoard.getQuarry().hasFigureOnIt()
 					|| gameBoard.getToolTile().hasFigureOnIt() || gameBoard.getAgroCulturePlace().hasFigureOnIt()) {
-				
-				//int allFiguresInOneZone = 0;
-//				for (Figure figure : gameBoard.getClaymound().getFigures()) {
-//					if (figure.getPlayer().equals(playerOnTurn)) {
-//						allFiguresInOneZone++;
-//					}
-//				}
-				
-				//int resource = gameBoard.getClaymound().removeAllFiguresOfOnePlayer(playerOnTurn);
-				
-				
+
+				// int allFiguresInOneZone = 0;
+				// for (Figure figure : gameBoard.getClaymound().getFigures()) {
+				// if (figure.getPlayer().equals(playerOnTurn)) {
+				// allFiguresInOneZone++;
+				// }
+				// }
+
+				// int resource =
+				// gameBoard.getClaymound().removeAllFiguresOfOnePlayer(playerOnTurn);
+
 				gameBoard.getClaymound().removeAllFiguresOfOnePlayer(playerOnTurn);
 				gameBoard.getRiver().removeAllFiguresOfOnePlayer(playerOnTurn);
 				gameBoard.getHuntingGround().removeAllFiguresOfOnePlayer(playerOnTurn);
@@ -144,12 +193,12 @@ public class Demo {
 				gameBoard.getToolTile().removeAllFiguresOfOnePlayer(playerOnTurn);
 				gameBoard.getAgroCulturePlace().removeAllFiguresOfOnePlayer(playerOnTurn);
 			}
-			
+
 			p1.feed();
 			p2.feed();
 
 		}
-
+		sc.close();
 	}
 
 	public static boolean checkIfValidWorkers(int workers, GameBoardElement e, Player p) {
