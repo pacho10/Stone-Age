@@ -59,5 +59,11 @@ public class House {
 	public int getPoints() {
 		return points;
 	}
+
+	@Override
+	public String toString() {
+		return "House [woodToPay=" + woodToPay + ", clayToPay=" + clayToPay + ", stonesToPay=" + stonesToPay
+				+ ", goldToPay=" + goldToPay + ", points=" + points + "]";
+	}
 	
 }

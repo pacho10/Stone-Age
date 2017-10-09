@@ -1,11 +1,12 @@
 package stoneAge.main;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
-import stoneAge.cards.Card;
 import stoneAge.houses.House;
 
 public class GameBoard {
+	private static final int NUMBER_OFhOUSES_IN_PILE = 7;
 	//private List<Card> cards;
 	//private List<House> houses;
 	private Forest forest;
@@ -16,7 +17,9 @@ public class GameBoard {
 	private Hut hut;
 	private HuntingGround huntingGround;
 	private AgroculturePlace agroCulturePlace;
-	
+	private LinkedList<House> pileOfHousesOne;
+	private LinkedList<House> pileOfHousesTwo;
+	private LinkedList<House> pileOfHousesThree;
 	public GameBoard() {
 		this.forest = new Forest();
 		this.claymound = new Claymound();
@@ -26,6 +29,17 @@ public class GameBoard {
 		this.hut = new Hut();
 		this.huntingGround = new HuntingGround();
 		this.agroCulturePlace = new AgroculturePlace();
+		this.pileOfHousesOne = new LinkedList<House>();
+		this.pileOfHousesTwo = new LinkedList<House>();
+		this.pileOfHousesThree = new LinkedList<House>();
+		
+		for (int i = 0; i < NUMBER_OFhOUSES_IN_PILE; i++) {
+			pileOfHousesOne.add(House.generateRandomHouse());
+		}for (int i = 0; i < NUMBER_OFhOUSES_IN_PILE; i++) {
+			pileOfHousesTwo.add(House.generateRandomHouse());
+		}for (int i = 0; i < NUMBER_OFhOUSES_IN_PILE; i++) {
+			pileOfHousesThree.add(House.generateRandomHouse());
+		}
 	}
 
 	public AgroculturePlace getAgroCulturePlace() {
@@ -88,6 +102,22 @@ public class GameBoard {
 	public void setHuntingGround(HuntingGround huntingGround) {
 		this.huntingGround = huntingGround;
 	}
-	
 
+	public static int getNumberOfhousesInPile() {
+		return NUMBER_OFhOUSES_IN_PILE;
+	}
+
+	public LinkedList<House> getPileOfHousesOne() {
+		return pileOfHousesOne;
+	}
+
+	public LinkedList<House> getPileOfHousesTwo() {
+		return pileOfHousesTwo;
+	}
+
+	public LinkedList<House> getPileOfHousesThree() {
+		return pileOfHousesThree;
+	}
+	
+	
 }

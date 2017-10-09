@@ -14,6 +14,9 @@ public class Demo {
 		Player p1 = new Player();
 		Player p2 = new Player();
 
+		System.out.println(gameBoard.getPileOfHousesOne());
+		System.out.println(gameBoard.getPileOfHousesTwo());
+		System.out.println(gameBoard.getPileOfHousesThree());
 		int turn = 0;
 		Player playerOnTurn = null;
 		while (true) {
