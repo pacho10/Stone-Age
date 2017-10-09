@@ -144,6 +144,9 @@ public class Demo {
 				gameBoard.getToolTile().removeAllFiguresOfOnePlayer(playerOnTurn);
 				gameBoard.getAgroCulturePlace().removeAllFiguresOfOnePlayer(playerOnTurn);
 			}
+			
+			p1.feed();
+			p2.feed();
 
 		}
 

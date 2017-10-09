@@ -13,7 +13,6 @@ public class HuntingGround extends GameBoardElement {
 	public int removeFigure(Figure figure) {
 		super.removeFigure(figure);
 		int diceValue = (int)((Math.random()*6)+1);
-		figure.getPlayer().gainFood(diceValue);//fix
 		return diceValue;
 	}
 	public void removeAllFiguresOfOnePlayer(Player player){
