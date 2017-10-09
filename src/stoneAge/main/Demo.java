@@ -192,11 +192,15 @@ public class Demo {
 				gameBoard.getQuarry().removeAllFiguresOfOnePlayer(playerOnTurn);
 				gameBoard.getToolTile().removeAllFiguresOfOnePlayer(playerOnTurn);
 				gameBoard.getAgroCulturePlace().removeAllFiguresOfOnePlayer(playerOnTurn);
+				gameBoard.getPileOne().removeAllFiguresOfOnePlayer(playerOnTurn);
+				gameBoard.getPileTwo().removeAllFiguresOfOnePlayer(playerOnTurn);
+				gameBoard.getPileThree().removeAllFiguresOfOnePlayer(playerOnTurn);
 			}
 
 			p1.feed();
 			p2.feed();
-
+			p1.toString();
+			p2.toString();
 		}
 		sc.close();
 	}

@@ -78,6 +78,16 @@ public class Player {
 			this.gold += amountOfGold;
 		}
 	}
+	public void gainPoints(int amountOfPoints) {
+		if (amountOfPoints > 0) {
+			this.gold += amountOfPoints;
+		}
+	}
+	public void gainFood(int amountOfFood) {
+		if (amountOfFood > 0) {
+			this.food += amountOfFood;
+		}
+	}
 
 	public void payClay(int amountOfClay) {
 		if (amountOfClay > 0) {
@@ -170,10 +180,8 @@ public class Player {
 		return this.figures.peek();
 	}
 
-	public void gainFood(int amountOfFood) {
-		if (amountOfFood > 0) {
-			this.food += amountOfFood;
-		}
+	public void incrementAgroCulture() {
+			this.agroCulture++;
 	}
 
 	public void placeFigure() {

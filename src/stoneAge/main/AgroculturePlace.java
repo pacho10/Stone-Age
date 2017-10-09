@@ -35,7 +35,7 @@ public class AgroculturePlace  extends GameBoardElement {
 		for (Figure figure : this.getFigures()) {
 			if ((player != null) && (figure.getPlayer().equals(player))) {
 				player.takeFigure(figure);
-				player.gainFood(1);
+				player.incrementAgroculture();
 				super.removeFigure(figure);
 			}
 		}
