@@ -13,15 +13,14 @@ public class HuntingGround extends GameBoardElement {
 	public int removeFigure(Figure figure) {
 		super.removeFigure(figure);
 		int diceValue = (int)((Math.random()*6)+1);
-		figure.getPlayer().gainFood(diceValue);
+		figure.getPlayer().gainFood(diceValue);//fix
 		return diceValue;
 	}
 	public void removeAllFiguresOfOnePlayer(Player player){
 		int amountOfFoodGaind = 0;
-		for (int i = 0; i < this.getFigures().size(); i++) {
-			if((this.getFigures().get(i).getPlayer().equals(player))){
-				player.takeFigure(this.getFigures().get(i));
-				amountOfFoodGaind += removeFigure(this.getFigures().get(i));	
+		for(Figure figure : this.getFigures()){
+			if(figure.getPlayer().equals(player)){
+				amountOfFoodGaind += removeFigure(figure);	
 			}
 		}
 		player.gainFood(amountOfFoodGaind/FOOD_COEFFICIENT);

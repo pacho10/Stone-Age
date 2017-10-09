@@ -25,7 +25,7 @@ public class Demo {
 						"Choose the area you wish to put workers:\n0: Forest(wood)\n1: Claymound\n2: Quarry(stones)\n3: River(gold)\n4:HuntingGround(food)\n5: Hut(more workers)\n6: ToolTile(tools)\n7: AgroCulturePlace(increases your agroculture)");
 				
 				int place = sc.nextInt();
-				if (place > 0 && place < NUMBER_OF_PLACES) {
+				if (place >= 0 && place < NUMBER_OF_PLACES) {
 					int workers = 0;
 					switch (place) {
 					case 0:
@@ -131,7 +131,7 @@ public class Demo {
 				//int resource = gameBoard.getClaymound().removeAllFiguresOfOnePlayer(playerOnTurn);
 				
 				
-				gameBoard.getClaymound().removeAllFiguresOfOnePlayer(playerOnTurn);;
+				gameBoard.getClaymound().removeAllFiguresOfOnePlayer(playerOnTurn);
 				gameBoard.getRiver().removeAllFiguresOfOnePlayer(playerOnTurn);
 				gameBoard.getHuntingGround().removeAllFiguresOfOnePlayer(playerOnTurn);
 				gameBoard.getForest().removeAllFiguresOfOnePlayer(playerOnTurn);

@@ -88,4 +88,6 @@ public class GameBoard {
 	public void setHuntingGround(HuntingGround huntingGround) {
 		this.huntingGround = huntingGround;
 	}
+	
+
 }
