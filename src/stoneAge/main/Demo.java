@@ -18,8 +18,6 @@ public class Demo {
 		System.out.println("Enter the name of the second player");
 		p2.setName(sc.next());
 		
-
-		
 		int turn = 0;
 		Player playerOnTurn = null;
 		while (gameBoard.getPileOne().getSize() > 0 || gameBoard.getPileTwo().getSize() > 0
@@ -195,12 +193,19 @@ public class Demo {
 				gameBoard.getPileOne().removeAllFiguresOfOnePlayer(playerOnTurn);
 				gameBoard.getPileTwo().removeAllFiguresOfOnePlayer(playerOnTurn);
 				gameBoard.getPileThree().removeAllFiguresOfOnePlayer(playerOnTurn);
+				
+				turn++;
+				playerOnTurn = (turn % 2 == 0) ? p1 : p2;
+				
+				System.out.println("in second while");
 			}
+			
+			System.out.println("vzeh si resursite");
 
 			p1.feed();
 			p2.feed();
-			p1.toString();
-			p2.toString();
+			System.out.println(p1.toString());
+			System.out.println(p2.toString());
 		}
 		sc.close();
 	}

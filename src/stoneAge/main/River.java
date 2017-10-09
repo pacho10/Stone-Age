@@ -1,9 +1,6 @@
 package stoneAge.main;
 
-import java.util.List;
-
 import stoneAge.player.Player;
-import stoneAge.resources.Gold;
 
 public class River extends GameBoardElement {
 	private static final int GOLD_COEFFICIENT = 6;
@@ -22,13 +19,21 @@ public class River extends GameBoardElement {
 	}
 	public void removeAllFiguresOfOnePlayer(Player player){
 		int amountOfGoldGained = 0;
-		for(Figure figure : this.getFigures()){
-			if((player != null) && (figure.getPlayer().equals(player))){
-				player.takeFigure(figure);
-				amountOfGoldGained += removeFigure(figure);
-				
+//		for(Figure figure : this.getFigures()){
+//			if((player != null) && (figure.getPlayer().equals(player))){
+//				player.takeFigure(figure);
+//				amountOfGoldGained += removeFigure(figure);
+//				
+//			}
+//		}
+		
+		for (int i = 0; i < this.getFigures().size(); i++) {
+			if ((player != null) && (this.getFigures().get(i).getPlayer().equals(player))) {
+				player.takeFigure(this.getFigures().get(i));
+				amountOfGoldGained += removeFigure(this.getFigures().get(i));
 			}
 		}
+		
 		player.gainStone(amountOfGoldGained/GOLD_COEFFICIENT);
 	}
 }

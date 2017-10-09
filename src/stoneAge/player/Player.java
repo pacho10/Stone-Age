@@ -21,14 +21,6 @@ public class Player {
 	private int[] tools;
 	private int agroCulture;
 	private String name;
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	private int numberOfHouses;
 	private int points;
 
@@ -121,7 +113,7 @@ public class Player {
 
 	public void gainStone(int amountOfStone) {
 		if (amountOfStone > 0) {
-			this.gold += amountOfStone;
+			this.stone += amountOfStone;
 		}
 	}
 
@@ -197,6 +189,31 @@ public class Player {
 	public int getNumberOfFreeFigures(){
 		return this.figures.size();
 	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Player other = (Player) obj;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
 
 	@Override
 	public String toString() {
@@ -206,5 +223,12 @@ public class Player {
 				+ ", multiplierForNumberOfFigures=" + multiplierForNumberOfFigures + ", tools=" + Arrays.toString(tools)
 				+ ", agroCulture=" + agroCulture + ", numberOfHouses=" + numberOfHouses + ", points=" + points + "]";
 	}
+	
+	public String getName() {
+		return name;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
 }

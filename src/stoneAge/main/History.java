@@ -18,7 +18,7 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 
 public class History {
 	private static final String DB_USER = "root";
-	private static final String DB_PASS = "1";
+	private static final String DB_PASS = "root";
 	private String time;
 	private String date;
 	private String player1;
@@ -78,7 +78,9 @@ public class History {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}finally{
-			pr.close();
+			if (pr != null) {
+				pr.close();
+			}
 		}
 		
 	}

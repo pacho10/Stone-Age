@@ -31,9 +31,16 @@ public class ToolTile extends GameBoardElement {
 	}
 	
 	public void removeAllFiguresOfOnePlayer(Player player) {
-		for (Figure figure : this.getFigures()) {
-			if ((player != null) && (figure.getPlayer().equals(player))) {
-				player.takeFigure(figure);
+//		for (Figure figure : this.getFigures()) {
+//			if ((player != null) && (figure.getPlayer().equals(player))) {
+//				player.takeFigure(figure);
+//				player.addOneTool();
+//			}
+//		}
+		
+		for (int i = 0; i < this.getFigures().size(); i++) {
+			if ((player != null) && (this.getFigures().get(i).getPlayer().equals(player))) {
+				player.takeFigure(this.getFigures().get(i));
 				player.addOneTool();
 			}
 		}

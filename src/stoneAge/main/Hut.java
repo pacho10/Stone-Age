@@ -35,10 +35,18 @@ public class Hut extends GameBoardElement {
 	
 	public void removeAllFiguresOfOnePlayer(Player player) {
 		boolean flag = false;
-		for (Figure figure : this.getFigures()) {
-			if ((player != null) && (figure.getPlayer().equals(player))) {
-				player.takeFigure(figure);
-				super.removeFigure(figure);
+//		for (Figure figure : this.getFigures()) {
+//			if ((player != null) && (figure.getPlayer().equals(player))) {
+//				player.takeFigure(figure);
+//				super.removeFigure(figure);
+//				flag = true;
+//			}
+//		}
+		
+		for (int i = 0; i < this.getFigures().size(); i++) {
+			if ((player != null) && (this.getFigures().get(i).getPlayer().equals(player))) {
+				player.takeFigure(this.getFigures().get(i));
+				super.removeFigure(this.getFigures().get(i));
 				flag = true;
 			}
 		}

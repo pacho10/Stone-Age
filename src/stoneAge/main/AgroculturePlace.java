@@ -32,11 +32,19 @@ public class AgroculturePlace  extends GameBoardElement {
 	}
 	
 	public void removeAllFiguresOfOnePlayer(Player player) {
-		for (Figure figure : this.getFigures()) {
-			if ((player != null) && (figure.getPlayer().equals(player))) {
-				player.takeFigure(figure);
+//		for (Figure figure : this.getFigures()) {
+//			if ((player != null) && (figure.getPlayer().equals(player))) {
+//				player.takeFigure(figure);
+//				player.incrementAgroculture();
+//				super.removeFigure(figure);
+//			}
+//		}
+		
+		for (int i = 0; i < this.getFigures().size(); i++) {
+			if((player != null) && (this.getFigures().get(i).getPlayer().equals(player))){
+				player.takeFigure(this.getFigures().get(i));
 				player.incrementAgroculture();
-				super.removeFigure(figure);
+				super.removeFigure(this.getFigures().get(i));
 			}
 		}
 	}

@@ -1,9 +1,6 @@
 package stoneAge.main;
 
-import java.util.List;
-
 import stoneAge.player.Player;
-import stoneAge.resources.Stone;
 
 public class Quarry extends GameBoardElementWithResources {
 	//private List<Stone> resorces;
@@ -22,13 +19,21 @@ public class Quarry extends GameBoardElementWithResources {
 	}
 	public void removeAllFiguresOfOnePlayer(Player player){
 		int amountOfStoneGained = 0;
-		for(Figure figure : this.getFigures()){
-			if((player != null) && (figure.getPlayer().equals(player))){
-				player.takeFigure(figure);
-				amountOfStoneGained += removeFigure(figure);
-				
+//		for(Figure figure : this.getFigures()){
+//			if((player != null) && (figure.getPlayer().equals(player))){
+//				player.takeFigure(figure);
+//				amountOfStoneGained += removeFigure(figure);
+//				
+//			}
+//		}
+		
+		for (int i = 0; i < this.getFigures().size(); i++) {
+			if ((player != null) && (this.getFigures().get(i).getPlayer().equals(player))) {
+				player.takeFigure(this.getFigures().get(i));
+				amountOfStoneGained += removeFigure(this.getFigures().get(i));
 			}
 		}
+		
 		player.gainStone(amountOfStoneGained/STONE_COEFFICIENT);
 	}
 	

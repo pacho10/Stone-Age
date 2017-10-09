@@ -28,7 +28,7 @@ private List<Figure> figures;
 	
 	public int removeFigure(Figure figure) {
 		this.figures.remove(figure);
-		figure.getPlayer().takeFigure(figure);
+		//figure.getPlayer().takeFigure(figure);
 		return 0;
 	}
 	

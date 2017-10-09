@@ -17,9 +17,11 @@ public class HuntingGround extends GameBoardElement {
 	}
 	public void removeAllFiguresOfOnePlayer(Player player){
 		int amountOfFoodGaind = 0;
-		for(Figure figure : this.getFigures()){
-			if(figure.getPlayer().equals(player)){
-				amountOfFoodGaind += removeFigure(figure);	
+		
+		for (int i = 0; i < this.getFigures().size(); i++) {
+			if((player != null) && (this.getFigures().get(i).getPlayer().equals(player))){
+				player.takeFigure(this.getFigures().get(i));
+				amountOfFoodGaind += removeFigure(this.getFigures().get(i));	
 			}
 		}
 		player.gainFood(amountOfFoodGaind/FOOD_COEFFICIENT);
