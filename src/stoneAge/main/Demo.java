@@ -18,10 +18,12 @@ public class Demo {
 		System.out.println("Enter the name of the second player");
 		p2.setName(sc.next());
 		
+		
+		
 		int turn = 0;
 		Player playerOnTurn = null;
-		while (gameBoard.getPileOne().getSize() > 0 || gameBoard.getPileTwo().getSize() > 0
-				|| gameBoard.getPileThree().getSize() > 0) {
+		while (gameBoard.getPileOne().getSize() > 0 && gameBoard.getPileTwo().getSize() > 0
+				&& gameBoard.getPileThree().getSize() > 0) {
 			int putPhaseTurn = 0;
 
 			while ((p1.getNumberOfWorkers() > 0) || (p2.getNumberOfWorkers() > 0)) {

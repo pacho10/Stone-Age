@@ -27,10 +27,11 @@ public class HousePile extends GameBoardElement {
 	}
 
 	public void removeAllFiguresOfOnePlayer(Player player) {
-		if (this.hasFigureOnIt() && (player != null) && (this.getFigures().get(0).equals(player))) {
+		if (this.hasFigureOnIt() && (player != null)) {
 			player.takeFigure(this.getFigures().get(0));
 			super.removeFigure(this.getFigures().get(0));
 			player.gainPoints(this.pile.peek().getPoints());
+			this.pile.remove();
 			System.out.println(player.getName()+"'s tribe, has a new house.");
 
 		}
