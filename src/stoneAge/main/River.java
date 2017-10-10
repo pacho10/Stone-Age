@@ -27,13 +27,16 @@ public class River extends GameBoardElement {
 //			}
 //		}
 		
-		for (int i = 0; i < this.getFigures().size(); i++) {
-			if ((player != null) && (this.getFigures().get(i).getPlayer().equals(player))) {
-				player.takeFigure(this.getFigures().get(i));
-				amountOfGoldGained += removeFigure(this.getFigures().get(i));
+		if (player != null) {
+			for (int i = 0; i < this.getFigures().size(); i++) {
+				if ((this.getFigures().get(i) != null) && (this.getFigures().get(i).getPlayer().equals(player))) {
+					player.takeFigure(this.getFigures().get(i));
+					amountOfGoldGained += removeFigure(this.getFigures().get(i));
+					i--;
+				}
 			}
+			System.out.println(player.getName()+" has gained "+amountOfGoldGained/GOLD_COEFFICIENT+" amount of gold.");
+			player.gainGold(amountOfGoldGained/GOLD_COEFFICIENT);
 		}
-		System.out.println(player.getName()+" has gained "+amountOfGoldGained/GOLD_COEFFICIENT+" amount of gold.");
-		player.gainGold(amountOfGoldGained/GOLD_COEFFICIENT);
 	}
 }

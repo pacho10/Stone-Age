@@ -40,12 +40,15 @@ public class AgroculturePlace  extends GameBoardElement {
 //			}
 //		}
 		
-		for (int i = 0; i < this.getFigures().size(); i++) {
-			if((player != null) && (this.getFigures().get(i).getPlayer().equals(player))){
-				player.takeFigure(this.getFigures().get(i));
-				player.incrementAgroculture();
-				super.removeFigure(this.getFigures().get(i));
-				System.out.println("Agroculture of "+player.getName()+" has increased.");
+		if (player != null) {
+			for (int i = 0; i < this.getFigures().size(); i++) {
+				if((this.getFigures().get(i) != null) && (this.getFigures().get(i).getPlayer().equals(player))){
+					player.takeFigure(this.getFigures().get(i));
+					player.incrementAgroculture();
+					super.removeFigure(this.getFigures().get(i));
+					System.out.println("Agroculture of "+player.getName()+" has increased.");
+					i--;
+				}
 			}
 		}
 	}

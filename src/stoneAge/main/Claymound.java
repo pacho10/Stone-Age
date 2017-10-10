@@ -27,13 +27,16 @@ public class Claymound extends GameBoardElement {
 //			}
 //		}
 		
-		for (int i = 0; i < this.getFigures().size(); i++) {
-			if ((player != null) && (this.getFigures().get(i).getPlayer().equals(player))) {
-				player.takeFigure(this.getFigures().get(i));
-				amountOfClayGained += removeFigure(this.getFigures().get(i));
+		if (player != null) {
+			for (int i = 0; i < this.getFigures().size(); i++) {
+				if ((this.getFigures().get(i) != null) && (this.getFigures().get(i).getPlayer().equals(player))) {
+					player.takeFigure(this.getFigures().get(i));
+					amountOfClayGained += removeFigure(this.getFigures().get(i));
+					i--;
+				}
 			}
+			System.out.println(player.getName()+" has gained "+amountOfClayGained/CLAY_COEFFICIENT+" amount of clay.");
+			player.gainClay(amountOfClayGained/CLAY_COEFFICIENT);
 		}
-		System.out.println(player.getName()+" has gained "+amountOfClayGained/CLAY_COEFFICIENT+" amount of clay.");
-		player.gainClay(amountOfClayGained/CLAY_COEFFICIENT);
 	}
 }

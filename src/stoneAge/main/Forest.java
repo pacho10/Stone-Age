@@ -21,13 +21,16 @@ public class Forest extends GameBoardElementWithResources {
 	public void removeAllFiguresOfOnePlayer(Player player) {
 		int amountOfWoodGained = 0;
 
-		for (int i = 0; i < this.getFigures().size(); i++) {
-			if ((player != null) && (this.getFigures().get(i).getPlayer().equals(player))) {
-				player.takeFigure(this.getFigures().get(i));
-				amountOfWoodGained += removeFigure(this.getFigures().get(i));
+		if (player != null) {
+			for (int i = 0; i < this.getFigures().size(); i++) {
+				if ((this.getFigures().get(i) != null) && (this.getFigures().get(i).getPlayer().equals(player))) {
+					player.takeFigure(this.getFigures().get(i));
+					amountOfWoodGained += removeFigure(this.getFigures().get(i));
+					i--;
+				}
 			}
+			System.out.println(player.getName()+" has gained "+amountOfWoodGained / WOOD_COEFICIENT+" amount of wood.");
+			player.gainWood(amountOfWoodGained / WOOD_COEFICIENT);
 		}
-		System.out.println(player.getName()+" has gained "+amountOfWoodGained / WOOD_COEFICIENT+" amount of wood.");
-		player.gainWood(amountOfWoodGained / WOOD_COEFICIENT);
 	}
 }

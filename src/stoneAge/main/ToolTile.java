@@ -38,11 +38,14 @@ public class ToolTile extends GameBoardElement {
 //			}
 //		}
 		
-		for (int i = 0; i < this.getFigures().size(); i++) {
-			if ((player != null) && (this.getFigures().get(i).getPlayer().equals(player))) {
-				player.takeFigure(this.getFigures().get(i));
-				player.addOneTool();
-				System.out.println(player + "gained one tool.");
+		if (player != null) {
+			for (int i = 0; i < this.getFigures().size(); i++) {
+				if ((this.getFigures().get(i) != null) && (this.getFigures().get(i).getPlayer().equals(player))) {
+					player.takeFigure(this.getFigures().get(i));
+					player.addOneTool();
+					System.out.println(player + "gained one tool.");
+					i--;
+				}
 			}
 		}
 	}

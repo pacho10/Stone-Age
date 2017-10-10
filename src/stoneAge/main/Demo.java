@@ -207,7 +207,7 @@ public class Demo {
 				
 				turn++;
 				playerOnTurn = (turn % 2 == 0) ? p1 : p2;
-				
+				System.out.println("in second while");
 			}
 			
 			System.out.println("End of turn.");

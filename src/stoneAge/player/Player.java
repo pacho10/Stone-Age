@@ -72,7 +72,7 @@ public class Player {
 	}
 	public void gainPoints(int amountOfPoints) {
 		if (amountOfPoints > 0) {
-			this.gold += amountOfPoints;
+			this.points += amountOfPoints;
 		}
 	}
 	public void gainFood(int amountOfFood) {

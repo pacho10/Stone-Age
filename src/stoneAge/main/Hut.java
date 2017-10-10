@@ -43,18 +43,20 @@ public class Hut extends GameBoardElement {
 //			}
 //		}
 		
-		for (int i = 0; i < this.getFigures().size(); i++) {
-			if ((player != null) && (this.getFigures().get(i).getPlayer().equals(player))) {
-				player.takeFigure(this.getFigures().get(i));
-				super.removeFigure(this.getFigures().get(i));
-				flag = true;
-				break;
+		if (player != null) {
+			for (int i = 0; i < this.getFigures().size(); i++) {
+				if ((this.getFigures().get(i) != null) && (this.getFigures().get(i).getPlayer().equals(player))) {
+					player.takeFigure(this.getFigures().get(i));
+					super.removeFigure(this.getFigures().get(i));
+					flag = true;
+					i--;
+				}
 			}
-		}
-		
-		if (flag) {
-			player.takeFigure(new Figure(player));
-			System.out.println(player.getName()+" added one more worker to it's tribe.");
+			
+			if (flag) {
+				player.takeFigure(new Figure(player));
+				System.out.println(player.getName()+" added one more worker to it's tribe.");
+			}
 		}
 	}
 }
