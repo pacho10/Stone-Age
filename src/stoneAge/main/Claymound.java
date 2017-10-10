@@ -33,7 +33,7 @@ public class Claymound extends GameBoardElement {
 				amountOfClayGained += removeFigure(this.getFigures().get(i));
 			}
 		}
-		
+		System.out.println(player.getName()+" has gained "+amountOfClayGained/CLAY_COEFFICIENT+" amount of clay.");
 		player.gainClay(amountOfClayGained/CLAY_COEFFICIENT);
 	}
 }

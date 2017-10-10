@@ -6,7 +6,7 @@ import stoneAge.houses.House;
 import stoneAge.player.Player;
 
 public class HousePile extends GameBoardElement {
-	private static final int NUMBER_OF_HOUSES_IN_PILE = 7;
+	private static final int NUMBER_OF_HOUSES_IN_PILE = 1;
 	private static final int MAX_FREE_PLACES = 1;
 	private LinkedList<House> pile;
 
@@ -31,6 +31,7 @@ public class HousePile extends GameBoardElement {
 			player.takeFigure(this.getFigures().get(0));
 			super.removeFigure(this.getFigures().get(0));
 			player.gainPoints(this.pile.peek().getPoints());
+			System.out.println(player.getName()+"'s tribe, has a new house.");
 
 		}
 	}

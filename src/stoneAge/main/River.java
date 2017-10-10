@@ -33,7 +33,7 @@ public class River extends GameBoardElement {
 				amountOfGoldGained += removeFigure(this.getFigures().get(i));
 			}
 		}
-		
-		player.gainStone(amountOfGoldGained/GOLD_COEFFICIENT);
+		System.out.println(player.getName()+" has gained "+amountOfGoldGained/GOLD_COEFFICIENT+" amount of gold.");
+		player.gainGold(amountOfGoldGained/GOLD_COEFFICIENT);
 	}
 }

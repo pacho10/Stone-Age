@@ -48,11 +48,13 @@ public class Hut extends GameBoardElement {
 				player.takeFigure(this.getFigures().get(i));
 				super.removeFigure(this.getFigures().get(i));
 				flag = true;
+				break;
 			}
 		}
 		
 		if (flag) {
 			player.takeFigure(new Figure(player));
+			System.out.println(player.getName()+" added one more worker to it's tribe.");
 		}
 	}
 }

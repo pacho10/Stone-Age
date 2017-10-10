@@ -24,6 +24,7 @@ public class HuntingGround extends GameBoardElement {
 				amountOfFoodGaind += removeFigure(this.getFigures().get(i));	
 			}
 		}
+		System.out.println(player.getName()+" has gained "+amountOfFoodGaind/FOOD_COEFFICIENT+" amount of food.");
 		player.gainFood(amountOfFoodGaind/FOOD_COEFFICIENT);
 	}
 }

@@ -27,7 +27,7 @@ public class Forest extends GameBoardElementWithResources {
 				amountOfWoodGained += removeFigure(this.getFigures().get(i));
 			}
 		}
-
+		System.out.println(player.getName()+" has gained "+amountOfWoodGained / WOOD_COEFICIENT+" amount of wood.");
 		player.gainWood(amountOfWoodGained / WOOD_COEFICIENT);
 	}
 }

@@ -24,7 +24,7 @@ public class Demo {
 				|| gameBoard.getPileThree().getSize() > 0) {
 			int putPhaseTurn = 0;
 
-			while ((p1.getNumberOfFreeFigures() > 0) || (p2.getNumberOfFreeFigures() > 0)) {
+			while ((p1.getNumberOfWorkers() > 0) || (p2.getNumberOfWorkers() > 0)) {
 				playerOnTurn = (turn % 2 == 0) ? p1 : p2;
 				System.out.println(playerOnTurn.getName() +"'s turn:");
 				System.out.println(
@@ -43,6 +43,7 @@ public class Demo {
 							for (int i = 0; i < workers; i++) {
 								gameBoard.getForest().addFigure(playerOnTurn.giveFigure());
 							}
+							System.out.println("You now have "+playerOnTurn.getNumberOfWorkers()+" workers.");
 						}
 						break;
 					case 1:
@@ -53,6 +54,7 @@ public class Demo {
 							for (int i = 0; i < workers; i++) {
 								gameBoard.getClaymound().addFigure(playerOnTurn.giveFigure());
 							}
+							System.out.println("You now have "+playerOnTurn.getNumberOfWorkers()+" workers.");
 
 						}
 						// clay
@@ -65,6 +67,7 @@ public class Demo {
 							for (int i = 0; i < workers; i++) {
 								gameBoard.getQuarry().addFigure(playerOnTurn.giveFigure());
 							}
+							System.out.println("You now have "+playerOnTurn.getNumberOfWorkers()+" workers.");
 						}
 						// stones
 						break;
@@ -76,6 +79,7 @@ public class Demo {
 							for (int i = 0; i < workers; i++) {
 								gameBoard.getRiver().addFigure(playerOnTurn.giveFigure());
 							}
+							System.out.println("You now have "+playerOnTurn.getNumberOfWorkers()+" workers.");
 						}
 						// gold
 						break;
@@ -86,25 +90,29 @@ public class Demo {
 							for (int i = 0; i < workers; i++) {
 								gameBoard.getHuntingGround().addFigure(playerOnTurn.giveFigure());
 							}
+							System.out.println("You now have "+playerOnTurn.getNumberOfWorkers()+" workers.");
 						}
 						// food
 						break;
 					case 5:
 						if (gameBoard.getHut().getFreeSpaces() > 0) {
 							gameBoard.getHut().addFigure(playerOnTurn.giveFigure());
+							gameBoard.getHut().addFigure(playerOnTurn.giveFigure());
+							System.out.println("You now have "+playerOnTurn.getNumberOfWorkers()+" workers.");
 						}
 						// hut
 						break;
 					case 6:
 						if (gameBoard.getToolTile().getFreeSpaces() > 0) {
 							gameBoard.getToolTile().addFigure(playerOnTurn.giveFigure());
+							System.out.println("You now have "+playerOnTurn.getNumberOfWorkers()+" workers.");
 						}
 						// tools
 						break;
 					case 7:
-						if ((gameBoard.getHut().getFreeSpaces() > 0) && (playerOnTurn.getNumberOfFreeFigures() >= 2)) {
-							gameBoard.getHut().addFigure(playerOnTurn.giveFigure());
-							gameBoard.getHut().addFigure(playerOnTurn.giveFigure());
+						if ((gameBoard.getAgroCulturePlace().getFreeSpaces() > 0) && (playerOnTurn.getNumberOfWorkers() >= 1)) {
+							gameBoard.getAgroCulturePlace().addFigure(playerOnTurn.giveFigure());
+							System.out.println("You now have "+playerOnTurn.getNumberOfWorkers()+" workers.");
 						}
 						break;
 					// agroculture
@@ -123,8 +131,9 @@ public class Demo {
 									System.out.println("Sorry, this one is taken.");
 									over = true;
 								} else {
-									if (playerOnTurn.getNumberOfFreeFigures() >= 1) {
+									if (playerOnTurn.getNumberOfWorkers() >= 1) {
 										gameBoard.getPileOne().addFigure(playerOnTurn.giveFigure());
+										System.out.println("You now have "+playerOnTurn+" workers.");
 									}
 									over = false;
 								}break;
@@ -133,8 +142,9 @@ public class Demo {
 									System.out.println("Sorry, this one is taken.");
 									over = true;
 								} else {
-									if (playerOnTurn.getNumberOfFreeFigures() >= 1) {
+									if (playerOnTurn.getNumberOfWorkers() >= 1) {
 										gameBoard.getPileTwo().addFigure(playerOnTurn.giveFigure());
+										System.out.println("You now have "+playerOnTurn.getNumberOfWorkers()+" workers.");
 									}
 									over = false;
 								}break;
@@ -143,8 +153,9 @@ public class Demo {
 									System.out.println("Sorry, this one is taken.");
 									over = true;
 								} else {
-									if (playerOnTurn.getNumberOfFreeFigures() >= 1) {
+									if (playerOnTurn.getNumberOfWorkers() >= 1) {
 										gameBoard.getPileThree().addFigure(playerOnTurn.giveFigure());
+										System.out.println("You now have "+playerOnTurn.getNumberOfWorkers()+" workers.");
 									}
 									over = false;
 								}
@@ -197,21 +208,26 @@ public class Demo {
 				turn++;
 				playerOnTurn = (turn % 2 == 0) ? p1 : p2;
 				
-				System.out.println("in second while");
 			}
 			
-			System.out.println("vzeh si resursite");
+			System.out.println("End of turn.");
 
 			p1.feed();
 			p2.feed();
+			
+			
+			
 			System.out.println(p1.toString());
 			System.out.println(p2.toString());
 		}
 		sc.close();
+		String winner = (p1.getPoints()-p2.getPoints()>0) ? p1.getName():p2.getName();
+		History.createHistory(p1.getName(), p2.getName(), winner);
+		
 	}
 
 	public static boolean checkIfValidWorkers(int workers, GameBoardElement e, Player p) {
-		if (workers <= p.getNumberOfFreeFigures() && e.getFreeSpaces() >= workers) {
+		if (workers <= p.getNumberOfWorkers() && e.getFreeSpaces() >= workers) {
 			return true;
 		}
 		return false;

@@ -18,7 +18,7 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 
 public class History {
 	private static final String DB_USER = "root";
-	private static final String DB_PASS = "root";
+	private static final String DB_PASS = "1";
 	private String time;
 	private String date;
 	private String player1;
@@ -104,5 +104,9 @@ public class History {
 		}finally{
 			pr.close();
 		}
+	}
+	
+	public static void createHistory(String player1, String player2, String winner){
+		History h = new History(player1, player2, winner);
 	}
 }

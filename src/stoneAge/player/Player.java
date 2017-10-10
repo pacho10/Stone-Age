@@ -186,9 +186,7 @@ public class Player {
 		this.figures.add(figure);
 	}
 	
-	public int getNumberOfFreeFigures(){
-		return this.figures.size();
-	}
+	
 	
 	@Override
 	public int hashCode() {
@@ -214,18 +212,26 @@ public class Player {
 			return false;
 		return true;
 	}
+	
+	public int getNumberOfWorkers(){
+		return this.figures.size();
+	}
+
+	
+	
+	public int getPoints() {
+		return points;
+	}
+
+	public String getName() {
+		return name;
+	}
 
 	@Override
 	public String toString() {
-		return "Player [clay=" + clay + ", stone=" + stone + ", gold=" + gold + ", wood=" + wood + ", food=" + food
-				+ ", figures=" + figures + ", multiplierForHouses=" + multiplierForHouses + ", multiplierForTools="
-				+ multiplierForTools + ", multiplierForAgroCulture=" + multiplierForAgroCulture
-				+ ", multiplierForNumberOfFigures=" + multiplierForNumberOfFigures + ", tools=" + Arrays.toString(tools)
-				+ ", agroCulture=" + agroCulture + ", numberOfHouses=" + numberOfHouses + ", points=" + points + "]";
-	}
-	
-	public String getName() {
-		return name;
+		return "Player [wood=" + wood + ", clay=" + clay + ", stones=" + stone + ", gold=" + gold + ", food=" + food
+				+ ", tools=" + Arrays.toString(tools) + ", agroCulture=" + agroCulture + ", name=" + name
+				+ ", numberOfFigures=" + this.getNumberOfWorkers() +", numberOfHouses=" + numberOfHouses + ", points=" + points + "]";
 	}
 
 	public void setName(String name) {

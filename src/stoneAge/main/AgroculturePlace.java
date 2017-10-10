@@ -45,6 +45,7 @@ public class AgroculturePlace  extends GameBoardElement {
 				player.takeFigure(this.getFigures().get(i));
 				player.incrementAgroculture();
 				super.removeFigure(this.getFigures().get(i));
+				System.out.println("Agroculture of "+player.getName()+" has increased.");
 			}
 		}
 	}

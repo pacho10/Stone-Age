@@ -33,7 +33,7 @@ public class Quarry extends GameBoardElementWithResources {
 				amountOfStoneGained += removeFigure(this.getFigures().get(i));
 			}
 		}
-		
+		System.out.println(player.getName()+" has gained "+amountOfStoneGained/STONE_COEFFICIENT+" amount of stones.");
 		player.gainStone(amountOfStoneGained/STONE_COEFFICIENT);
 	}
 	
